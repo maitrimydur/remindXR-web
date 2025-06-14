@@ -5,9 +5,7 @@
 }
 
 .App {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  width: 100%;
 }
 
 /* Header */
@@ -17,7 +15,6 @@
   align-items: center;
   background: var(--blue);
   padding: 20px;
-  border-radius: 8px;
 }
 .logo { height: 40px; }
 .nav-links a {
@@ -93,32 +90,26 @@
   margin-bottom: 16px;
   color: var(--dark);
 }
+/* Remove any centering limits on your paragraphs & list */
 .why-intro,
-.why-outro {
-  max-width: 800px;
-  margin: 0 auto 24px;
-  line-height: 1.6;
-}
-.why-cards {
-  display: flex;
-  justify-content: center;
-  gap: 48px;
-  margin-bottom: 32px;
-}
-.why-card {
-  max-width: 280px;
-  text-align: center;
-}
-.why-card img {
-  width: 60px;
-  margin-bottom: 12px;
-}
+.why-outro,
 .why-list {
-  max-width: 800px;
-  margin: 0 auto 40px;
-  list-style: disc inside;
-  line-height: 1.6;
+  /* no more max-width */
+  max-width: none;
+  /* let it span the container */
+  width: 100%;
+  /* drop the auto centering */
+  margin: 0 0 24px;      /* or margin: 0 0 40px for the list if you like */
+  /* you can keep vertical spacing by adjusting only top/bottom */
 }
+
+/* if you want a little horizontal padding instead of stark edge-to-edge: */
+.why-intro,
+.why-outro,
+.why-list {
+  padding: 0 20px;      /* adjust as needed */
+}
+
 .graph {
   display: flex;
   justify-content: center;
