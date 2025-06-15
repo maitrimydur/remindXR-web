@@ -8,7 +8,7 @@
   width: 100%;
 }
 
-/* Header */
+/* Header (unchanged) */
 .header {
   display: flex;
   justify-content: space-between;
@@ -16,32 +16,27 @@
   background: var(--blue);
   padding: 20px;
 }
-.logo {
-  height: 40px;
-}
+.logo { height: 40px; }
 .nav-links {
   display: flex;
-  gap: 40px;           /* fixed 40px between each link */
-  padding: 0 40px;     /* 40px inset on left & right */
-  margin-left: auto;   /* push nav to the right */
+  gap: 40px;
+  padding: 0 40px;
+  margin-left: auto;
 }
 .nav-link {
   color: var(--white);
   text-decoration: none;
   font-weight: 600;
-  padding-bottom: 4px; /* room for the underline */
+  padding-bottom: 4px;
   position: relative;
 }
 .nav-link.active::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 0; left: 0; right: 0;
   height: 2px;
   background: var(--white);
 }
-
 .site-title {
   color: #DBEAFE;
   margin-left: 15px;
@@ -56,57 +51,69 @@
 /* Hero */
 .hero {
   display: flex;
-  align-items: flex-start;    /* top-align both columns */
-  margin: 50px;               /* 50px all around (50px under the header) */
+  align-items: flex-start;   /* pin both columns to the top */
+  margin: 50px;              /* 50px around */
+  margin-bottom: 30px;       /* exactly 30px below hero */
 }
 
-/* Left column: fixed to 50% of the container */
+/* Text column: grow/shrink & push buttons to bottom */
 .hero-text {
-  flex: 0 0 50%;
+  flex: 1 1 auto;
   min-width: 0;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;  /* ← heading/p at top, buttons at bottom */
 }
+
+/* Heading */
 .hero-text h1 {
-  font-size: 7rem;
+  font-size: clamp(2rem, 8vw, 7rem);
   line-height: 1.1;
   color: #1E40AF;
-  margin: 0 0 50px;           /* 50px gap below heading */
+  margin: 0 0 clamp(20px, 5vh, 50px);
 }
+
+/* Subtext */
 .hero-text p {
-  font-size: 2.5rem;
+  font-size: clamp(1rem, 3vw, 2.5rem);
   color: #1E40AF;
-  margin: 0 0 50px;           /* 50px gap below paragraph */
-  max-width: none;            /* paragraph will fill the text column */
+  margin: 0 0 clamp(20px, 5vh, 50px);
+  /* takes full width of the text column, no extra cap needed */
 }
+
+/* Button row */
 .hero-buttons {
   display: flex;
-  gap: 50px;                  /* exact 50px between buttons */
+  gap: clamp(20px, 5vw, 50px);
+}
+
+/* Buttons: keep 315×100 ratio, scale text, stay together at bottom */
+.hero-buttons .btn {
+  flex: 1;
+  min-width: 0;
+  aspect-ratio: 315 / 100;  
+  border-radius: clamp(12px, 3vw, 25px);
+  font-size: clamp(1rem, 2vw, 2.5rem);  /* scales with container */
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .btn.primary {
-  background: #2563EB;
+  background: var(--blue);
   color: var(--white);
-  width: 315px;
-  height: 100px;
-  border-radius: 25px;
-  font-size: 2rem;
-  font-weight: 300;
 }
 .btn.secondary {
   background: rgba(96, 164, 250, 0.25);
   color: #1E40AF;
   border: 2px solid #3B82F6;
-  width: 315px;
-  height: 100px;
-  border-radius: 25px;
-  font-size: 2rem;
-  font-weight: 300;
 }
 
-/* Right column: fills the remaining space */
+/* Image column: always 40% wide, 50px gutter */
 .hero-image {
-  flex: 1 1 auto;
-  margin-left: 50px;          /* gutter between text & image */
+  flex: 0 0 40%;
+  max-width: 40%;
+  margin-left: 50px;
   min-width: 0;
 }
 .hero-image img {
@@ -114,6 +121,11 @@
   height: auto;
   display: block;
 }
+
+/* …rest of your CSS (features, why-it-matters, etc.) unchanged… */
+
+
+
 
 /* Features */
 .features {
