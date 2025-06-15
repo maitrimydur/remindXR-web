@@ -59,15 +59,13 @@
 /* Hero */
 .hero {
   display: flex;
-  align-items: center;
+  align-items: flex-start;        /* ① pin both items to the top of the container */
   justify-content: space-between;
-  margin: 30px 0;
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-top: 50px;
+  margin: 50px 50px 30px;  
 }
 .hero-text {
-  flex: 1;
+  flex: 1 1 auto;                 /* allow text to grow & shrink */
+  min-width: 0; 
 }
 .hero-text h1 {
   font-size: 7rem;
@@ -91,8 +89,8 @@
 }
 .hero-buttons {
   display: flex;
-  gap: 50px;
-  margin-top: 30px;
+  gap: 50px;                       /* exact 50px between buttons */
+  margin-top: 30px;                /* your vertical spacing */
 }
 .btn.primary {
   background: #2563EB;
@@ -114,12 +112,16 @@
   font-weight: 300;
 }
 .hero-image {
-  flex: 0 0 40%;
-  margin-left: 50px;
+  flex: 0 1 40%;                   /* ② basis=40%, but *shrinkable* so it never overflows */
+  margin-left: 50px;               /* your gutter between text & image */
+  min-width: 0;                    /* so it can actually shrink if needed */
 }
 
+/* Make the img fill that container */
 .hero-image img {
-  max-width: 100%;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* Features */
