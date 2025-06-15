@@ -1,16 +1,27 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import researchIcon from '../assets/research.png'
-import codeIcon from '../assets/code.png'
-import appIcon from '../assets/app.png'
+import codeIcon     from '../assets/code.png'
+import appIcon      from '../assets/app.png'
 
-type CardProps = { icon: string; title: string; text: string; cta: string }
-function Card({ icon, title, text, cta }: CardProps) {
+type CardProps = {
+  icon: string
+  title: string
+  text: string
+  cta: string
+  to: string
+}
+
+function Card({ icon, title, text, cta, to }: CardProps) {
   return (
     <div className="feature-card">
       <img src={icon} alt={title} className="feature-icon" />
       <h3>{title}</h3>
       <p>{text}</p>
-      <a href="#">{cta} &gt;</a>
+      {/* Only this Link is clickable */}
+      <Link to={to} className="feature-cta">
+        {cta} &gt;
+      </Link>
     </div>
   )
 }
@@ -23,18 +34,21 @@ export default function Features() {
         title="Research"
         text="Read the pilot study on multisensor spaced repetition."
         cta="Read"
+        to="/research"
       />
       <Card
         icon={codeIcon}
         title="Simulation Code"
         text="View code for cognitive-load-adaptive scheduler."
         cta="View"
+        to="/code"
       />
       <Card
         icon={appIcon}
         title="Live App"
         text="Try the app directly in the browser."
         cta="Access"
+        to="/app"
       />
     </section>
   )
