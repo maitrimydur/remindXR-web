@@ -1,7 +1,7 @@
 :root {
-  --blue: #2563EB;
-  --dark: #223761;
-  --white: #fff;
+  --blue:   #2563EB;
+  --dark:   #223761;
+  --white:  #fff;
 }
 
 .App {
@@ -16,24 +16,22 @@
   background: var(--blue);
   padding: 20px;
 }
-.logo { height: 40px; }
+.logo {
+  height: 40px;
+}
 .nav-links {
   display: flex;
-  gap: 40px;          /* fixed 40px between each link */
-  padding: 0 40px;    /* 40px on left and right of the whole nav block */
-  margin-left: auto;  /* still pushes the nav block to the right */
+  gap: 40px;           /* fixed 40px between each link */
+  padding: 0 40px;     /* 40px inset on left & right */
+  margin-left: auto;   /* push nav to the right */
 }
 .nav-link {
   color: var(--white);
   text-decoration: none;
   font-weight: 600;
-  padding-bottom: 4px;           /* give some room for the underline */
-  position: relative;            /* for the pseudo-element */
+  padding-bottom: 4px; /* room for the underline */
+  position: relative;
 }
-
-
-
-/* Optional fancier underline via pseudo-element */
 .nav-link.active::after {
   content: '';
   position: absolute;
@@ -45,52 +43,45 @@
 }
 
 .site-title {
-  color: #DBEAFE;      /* your existing color */
-  margin-left: 15px;   /* pushes it 30px right of the logo */
-  font-size: 2rem;   /* optional—match your design */
+  color: #DBEAFE;
+  margin-left: 15px;
+  font-size: 2rem;
   font-weight: 600;
 }
 .branding {
   display: flex;
   align-items: center;
-  /* you can use gap instead of margin if you like */
 }
 
 /* Hero */
 .hero {
   display: flex;
-  align-items: flex-start;        /* ① pin both items to the top of the container */
-  justify-content: space-between;
-  margin: 50px 50px 30px;  
+  align-items: flex-start;    /* top-align both columns */
+  margin: 50px;               /* 50px all around (50px under the header) */
 }
+
+/* Left column: fixed to 50% of the container */
 .hero-text {
-  flex: 1 1 auto;                 /* allow text to grow & shrink */
-  min-width: 0; 
+  flex: 0 0 50%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 .hero-text h1 {
   font-size: 7rem;
   line-height: 1.1;
-  margin-bottom: 30px;
   color: #1E40AF;
+  margin: 0 0 50px;           /* 50px gap below heading */
 }
 .hero-text p {
-  margin-top: 30px;
   font-size: 2.5rem;
-  margin-bottom: 50px;
   color: #1E40AF;
-}
-.hero-buttons .btn {
-  padding: 12px 24px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-  margin-right: 12px;
+  margin: 0 0 50px;           /* 50px gap below paragraph */
+  max-width: none;            /* paragraph will fill the text column */
 }
 .hero-buttons {
   display: flex;
-  gap: 50px;                       /* exact 50px between buttons */
-  margin-top: 30px;                /* your vertical spacing */
+  gap: 50px;                  /* exact 50px between buttons */
 }
 .btn.primary {
   background: #2563EB;
@@ -111,13 +102,13 @@
   font-size: 2rem;
   font-weight: 300;
 }
-.hero-image {
-  flex: 0 1 40%;                   /* ② basis=40%, but *shrinkable* so it never overflows */
-  margin-left: 50px;               /* your gutter between text & image */
-  min-width: 0;                    /* so it can actually shrink if needed */
-}
 
-/* Make the img fill that container */
+/* Right column: fills the remaining space */
+.hero-image {
+  flex: 1 1 auto;
+  margin-left: 50px;          /* gutter between text & image */
+  min-width: 0;
+}
 .hero-image img {
   width: 100%;
   height: auto;
@@ -128,17 +119,15 @@
 .features {
   background-color: #3B82F6;
   display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 24px;
   margin-bottom: 60px;
 }
 .feature-card {
-  margin-top: 30px;
   background: #DBEAFE;
   padding: 24px;
   border-radius: 10px;
   text-align: center;
-  margin-bottom: 30px;
 }
 .feature-icon {
   width: 48px;
@@ -155,26 +144,33 @@
   margin-bottom: 16px;
   color: var(--dark);
 }
-/* Remove any centering limits on your paragraphs & list */
 .why-intro,
 .why-outro,
 .why-list {
-  /* no more max-width */
   max-width: none;
-  /* let it span the container */
   width: 100%;
-  /* drop the auto centering */
-  margin: 0 0 24px;      /* or margin: 0 0 40px for the list if you like */
-  /* you can keep vertical spacing by adjusting only top/bottom */
+  margin: 0 0 24px;
+  padding: 0 20px;
+}
+.why-cards {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  margin-bottom: 32px;
+}
+.why-card {
+  text-align: center;
+  max-width: 280px;
+}
+.why-card img {
+  width: 60px;
+  margin-bottom: 12px;
+}
+.why-list li {
+  margin-bottom: 12px;
 }
 
-/* if you want a little horizontal padding instead of stark edge-to-edge: */
-.why-intro,
-.why-outro,
-.why-list {
-  padding: 0 20px;      /* adjust as needed */
-}
-
+/* Bar Graph */
 .graph {
   display: flex;
   justify-content: center;
@@ -205,7 +201,6 @@
 .app-section {
   background: #1E40AF;
   padding: 40px 24px;
-  text-align: left;
   margin-bottom: 60px;
 }
 .btn.launch {
