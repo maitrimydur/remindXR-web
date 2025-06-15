@@ -19,17 +19,31 @@
 .logo { height: 40px; }
 .nav-links {
   display: flex;
-  flex: 0.35;                     /* fill remaining space */
-  justify-content: space-evenly; /* spread the links evenly */
-  margin-left: 30px;           /* gap from the branding block */
+  gap: 40px;          /* fixed 40px between each link */
+  padding: 0 40px;    /* 40px on left and right of the whole nav block */
+  margin-left: auto;  /* still pushes the nav block to the right */
 }
-
-.nav-links a {
+.nav-link {
   color: var(--white);
   text-decoration: none;
   font-weight: 600;
-  margin: 0;                   /* remove the old fixed margin */
+  padding-bottom: 4px;           /* give some room for the underline */
+  position: relative;            /* for the pseudo-element */
 }
+
+
+
+/* Optional fancier underline via pseudo-element */
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--white);
+}
+
 .site-title {
   color: #DBEAFE;      /* your existing color */
   margin-left: 15px;   /* pushes it 30px right of the logo */
@@ -186,14 +200,14 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0.875rem;
-  color: var(--dark);
+  color: #1E40AF;
   padding-top: 20px;
   border-top: 1px solid #ddd;
 }
 .footer-links a {
   margin-left: 16px;
   text-decoration: none;
-  color: var(--dark);
+  color: #1E40AF;
 }
 .github-icon {
   width: 20px;
