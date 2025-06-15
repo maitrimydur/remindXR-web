@@ -17,11 +17,29 @@
   padding: 20px;
 }
 .logo { height: 40px; }
+.nav-links {
+  display: flex;
+  flex: 0.35;                     /* fill remaining space */
+  justify-content: space-evenly; /* spread the links evenly */
+  margin-left: 30px;           /* gap from the branding block */
+}
+
 .nav-links a {
   color: var(--white);
-  margin-left: 24px;
   text-decoration: none;
   font-weight: 600;
+  margin: 0;                   /* remove the old fixed margin */
+}
+.site-title {
+  color: #DBEAFE;      /* your existing color */
+  margin-left: 15px;   /* pushes it 30px right of the logo */
+  font-size: 2rem;   /* optional—match your design */
+  font-weight: 600;
+}
+.branding {
+  display: flex;
+  align-items: center;
+  /* you can use gap instead of margin if you like */
 }
 
 /* Hero */
@@ -64,16 +82,19 @@
 
 /* Features */
 .features {
+  background-color: #3B82F6;
   display: grid;
   grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
   gap: 24px;
   margin-bottom: 60px;
 }
 .feature-card {
-  background: var(--white);
+  margin-top: 30px;
+  background: #DBEAFE;
   padding: 24px;
   border-radius: 10px;
   text-align: center;
+  margin-bottom: 30px;
 }
 .feature-icon {
   width: 48px;
@@ -138,7 +159,7 @@
 
 /* App Section */
 .app-section {
-  background: var(--white);
+  background: #1E40AF;
   padding: 40px 24px;
   text-align: left;
   margin-bottom: 60px;
