@@ -66,6 +66,9 @@
   margin-right: 50px;
   margin-top: 50px;
 }
+.hero-text {
+  flex: 1;
+}
 .hero-text h1 {
   font-size: 7rem;
   line-height: 1.1;
@@ -86,6 +89,11 @@
   font-weight: 600;
   margin-right: 12px;
 }
+.hero-buttons {
+  display: flex;
+  gap: 50px;
+  margin-top: 30px;
+}
 .btn.primary {
   background: #2563EB;
   color: var(--white);
@@ -105,6 +113,11 @@
   font-size: 2rem;
   font-weight: 300;
 }
+.hero-image {
+  flex: 0 0 40%;
+  margin-left: 50px;
+}
+
 .hero-image img {
   max-width: 100%;
 }
