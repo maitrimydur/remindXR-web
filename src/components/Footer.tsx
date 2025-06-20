@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="footer-links">
         <a href="#">Privacy Policy</a>
         <a href="#">Term Use</a>
-        <a href="https://github.com/maitrimydur/remindXR-web" target="_blank" rel="noopener">
+        <a href="https://github.com/maitrimydur" target="_blank" rel="noopener">
           <img src={githubIcon} alt="GitHub" className="github-icon"/>
         </a>
       </div>
