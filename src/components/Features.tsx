@@ -34,21 +34,21 @@ export default function Features() {
         title="Research"
         text="Read the pilot study on multisensor spaced repetition."
         cta="Read"
-        to="/research"
+        to="https://www.researchgate.net/publication/392627252_Enhancing_Memory_After_Traumatic_Brain_Injury_Through_Multisensory_Load-Adaptive_Spaced_Repetition_Effects_on_Delayed_Recall_and_Everyday_Self-Efficacy_in_Adolescents_and_Young_Adults"
       />
       <Card
         icon={codeIcon}
         title="Simulation Code"
         text="View code for cognitive-load-adaptive scheduler."
         cta="View"
-        to="/code"
+        to="https://github.com/maitrimydur/sr-scheduler-comparison"
       />
       <Card
         icon={appIcon}
         title="Live App"
         text="Try the app directly in the browser."
         cta="Access"
-        to="/app"
+        to="https://remind-xr.netlify.app/"
       />
     </section>
   )
