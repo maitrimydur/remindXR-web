@@ -8,7 +8,6 @@ export default function AppSection() {
       <p>Jump into the in-browser app—start your 8-day memory workout.</p>
       <button className="btn launch">Launch App</button>
       <div className="practice-deck">
-        <span>Practice Deck</span>
         <img src={apple} alt="Apple" />
       </div>
     </section>
