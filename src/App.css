@@ -4,11 +4,12 @@
   --white:  #fff;
 }
 
+/* App wrapper */
 .App {
   width: 100%;
 }
 
-/* Header (unchanged) */
+/* Header */
 .header {
   display: flex;
   justify-content: space-between;
@@ -48,70 +49,57 @@
   align-items: center;
 }
 
-/* Hero */
+/* ─── Hero (mobile-first) ─── */
 .hero {
   display: flex;
-  align-items: flex-start;   /* pin both columns to the top */
-  margin: 50px;              /* 50px around */
-  margin-bottom: 30px;       /* exactly 30px below hero */
+  align-items: flex-start;   /* pin text & image at top */
+  margin: 50px;
+  margin-bottom: 50px;
 }
-
-/* Text column: grow/shrink & push buttons to bottom */
 .hero-text {
   flex: 1 1 auto;
   min-width: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;  /* ← heading/p at top, buttons at bottom */
+  display: block;            /* simple flow by default */
 }
-
-/* Heading */
 .hero-text h1 {
   font-size: clamp(2rem, 8vw, 7rem);
   line-height: 1.1;
   color: #1E40AF;
-  margin: 0 0 clamp(20px, 5vh, 50px);
+  margin: 0 0 20px;          /* ALWAYS 20px down to the P */
 }
-
-/* Subtext */
 .hero-text p {
   font-size: clamp(1rem, 3vw, 2.5rem);
   color: #1E40AF;
-  margin: 0 0 clamp(20px, 5vh, 50px);
-  /* takes full width of the text column, no extra cap needed */
+  margin: 0 0 30px;          /* ALWAYS 30px down to the buttons */
 }
-
-/* Button row */
 .hero-buttons {
   display: flex;
   gap: clamp(20px, 5vw, 50px);
 }
-
-/* Buttons: keep 315×100 ratio, scale text, stay together at bottom */
 .hero-buttons .btn {
-  flex: 1;
+  flex: 1 1 0;
   min-width: 0;
-  aspect-ratio: 315 / 100;  
+  width: 100%;
+  max-width: 315px;
+  aspect-ratio: 315 / 100;   /* locked 315×100 */
   border-radius: clamp(12px, 3vw, 25px);
-  font-size: clamp(1rem, 2vw, 2.5rem);  /* scales with container */
+  font-size: clamp(1rem, 2vw, 2rem);
   font-weight: 300;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 30px;
-  
+  margin: 0;
 }
 .btn.primary {
-  background: var(--blue);
+  background: #2563EB;
   color: var(--white);
+  border: 2px solid #2563EB;
 }
 .btn.secondary {
   background: rgba(96, 164, 250, 0.25);
   color: #1E40AF;
   border: 2px solid #3B82F6;
 }
-
-/* Image column: always 40% wide, 50px gutter */
 .hero-image {
   flex: 0 0 40%;
   max-width: 40%;
@@ -124,34 +112,34 @@
   display: block;
 }
 
-/* …rest of your CSS (features, why-it-matters, etc.) unchanged… */
-
-
-
-
-/* Features */
+/* Features section */
 .features {
   background-color: #3B82F6;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 30px;
-
+  display: flex;
+  justify-content: center;
+  gap: clamp(30px, calc((100vw - 1350px)/2), 80px);
+  padding: clamp(40px, calc((100vw - 1350px)/2 + 10px), 90px) 20px;
 }
 .feature-card {
-  margin-top: 30px;
+  flex: 1 1 0;
+  min-width: 0;
+  width: 100%;
+  max-width: 450px;
+  aspect-ratio: 450 / 650;
   background: #DBEAFE;
   padding: 24px;
   border-radius: 10px;
   text-align: center;
-  margin-bottom: 60px;
 }
 .feature-icon {
-  width: 48px;
-  margin-bottom: 20px;
+  height: clamp(80px, 8vw, 120px);
+  width: auto;
+  object-fit: contain;
+  display: block;
+  margin: 16px auto clamp(20px, 4vw, 60px);
 }
 
-
-/* Why It Matters */
+/* Why It Matters… */
 .why {
   background-color: #3B82F6;
   margin: 60px 0;
@@ -165,7 +153,6 @@
 .why-intro,
 .why-outro,
 .why-list {
-  max-width: none;
   width: 100%;
   margin: 0 0 24px;
   padding: 0 20px;
@@ -188,7 +175,7 @@
   margin-bottom: 12px;
 }
 
-/* Bar Graph */
+/* Bar Graph… */
 .graph {
   display: flex;
   justify-content: center;
@@ -215,7 +202,7 @@
   margin-top: 4px;
 }
 
-/* App Section */
+/* App Section… */
 .app-section {
   background: #1E40AF;
   padding: 40px 24px;
@@ -237,22 +224,41 @@
   border-radius: 8px;
 }
 
-/* Footer */
+/* Footer… */
 .footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 0.875rem;
-  color: #1E40AF;
+  color: var(--dark);
   padding-top: 20px;
   border-top: 1px solid #ddd;
 }
 .footer-links a {
   margin-left: 16px;
   text-decoration: none;
-  color: #1E40AF;
+  color: var(--dark);
 }
 .github-icon {
   width: 20px;
   margin-left: 16px;
+}
+
+/* ─── Wide screens (≥1125px) ───
+   switch to grid-based hero so buttons slide down */
+@media (min-width: 1125px) {
+  .hero-text {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+  }
+  .hero-text h1 {
+    margin: 0 0 50px;    /* 50px → paragraph */
+  }
+  .hero-text p {
+    margin: 0 0 30px;    /* still 30px → buttons */
+  }
+  .hero-buttons {
+    grid-row: 3;
+    align-self: center;  /* buttons ride the bottom leftover space */
+  }
 }
