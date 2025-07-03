@@ -1,12 +1,12 @@
-/* colour tokens already exist globally, so we only add what we need here */
+/* ── Why-It-Matters section ───────────────────────────────────── */
 
-/* ── Section wrapper ─────────────────────────────────────────────── */
+/* wrapper ------------------------------------------------------ */
 .why {
   background: #3B82F6;
   margin: 0;
   padding: 60px 50px;
   display: grid;
-  grid-template-columns: 1fr;          /* always single column */
+  grid-template-columns: 1fr;   /* single column on all screens */
   grid-template-areas:
     "title"
     "intro"
@@ -17,48 +17,57 @@
   gap: clamp(20px, 4vw, 40px);
 }
 
-/* Section title */
+/* title -------------------------------------------------------- */
 .why h2 {
   grid-area: title;
-  color: #DBEAFE;
   font-size: clamp(2.5rem, 6vw, 5rem);
+  color: #DBEAFE;
   margin: 0 0 30px;
 }
 
-/* Intro paragraph with floating icon */
+/* intro paragraph --------------------------------------------- */
 .why-intro {
   grid-area: intro;
   font-size: clamp(1.25rem, 3vw, 2.5rem);
   color: #DBEAFE;
   margin: 0 0 24px;
   line-height: 1.45;
-  position: relative;
+  padding-left: 20px;
 }
 
+/*  ✅ SINGLE authoritative rule for the floating brain icon  */
 .brain-float {
   float: right;
-  /* 50 % larger than the original size */
-  width: clamp(180px, 33vw, 330px);
-  margin-left: 24px;
-  margin-bottom: 12px;
+  width: 30vw;          /* 40 % of the viewport width */
+  height: auto;         /* preserve aspect ratio */
+  margin-inline-start: 20px;
+  margin-block-end: 12px;
   shape-outside: circle();
 }
 
-/* Feature list */
+/* small screens: drop the float and give a sensible width ------ */
+@media (max-width: 600px) {
+  .brain-float {
+    float: none;
+    display: block;
+    margin: 0 auto 20px;
+    width: 60vw;        /* a bit larger on phones */
+  }
+}
+
+/* feature list ------------------------------------------------- */
 .why-list {
   grid-area: list;
   font-size: clamp(1.25rem, 3vw, 2.5rem);
   color: #DBEAFE;
-  list-style-position: outside;  /* bullet in gutter */
+  list-style-position: outside;   /* bullet in gutter */
   margin: 0 0 24px;
-  padding-left: 0;               /* no indent on intro line */
+  padding-left: 0;               /* lead sentence stays flush left */
 }
 
-.why-list li {
-  margin-left: 2rem;             /* indent only list items */
-}
+.why-list li { margin-left: 2rem; }
 
-/* Graph icon + caption */
+/* graph icon + caption ---------------------------------------- */
 .why-graph-caption {
   grid-area: graphcap;
   display: flex;
@@ -70,13 +79,12 @@
 }
 
 .why-graph-caption img {
-  /* ⇩ NEW: 70 % width, auto height, centered */
   width: 50%;
   height: auto;
   margin: 0 auto;
 }
 
-/* Bar-chart graphic */
+/* bar-chart graphic ------------------------------------------- */
 .graph {
   grid-area: graph;
   display: flex;
@@ -98,30 +106,15 @@
   border-radius: 6px 6px 0 0;
 }
 
-.label {
-  margin-top: 8px;
-  font-weight: 600;
-}
+/* labels ------------------------------------------------------- */
+.label  { margin-top: 8px; font-weight: 600; }
+.percent{ font-size: 0.875rem; margin-top: 4px; }
 
-.percent {
-  font-size: 0.875rem;
-  margin-top: 4px;
-}
-
-/* Closing paragraph */
+/* closing paragraph ------------------------------------------- */
 .why-outro {
   grid-area: outro;
   font-size: clamp(1.25rem, 3vw, 2.5rem);
   color: #DBEAFE;
   margin: 0;
   padding: 0 20px;
-}
-
-/* Mobile safety: on very narrow screens drop the float so the icon sits above text */
-@media (max-width: 600px) {
-  .brain-float {
-    float: none;
-    display: block;
-    margin: 0 auto 20px;
-  }
 }
